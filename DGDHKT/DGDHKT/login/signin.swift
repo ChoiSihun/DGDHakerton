@@ -19,13 +19,14 @@ class SigninVC: UIViewController {
     @State var request: Bool = false
     @State var success: Bool = false
     
-    let logolb = UILabel().then {
-        //        $0.text = "MarryMeBrother"
-        $0.font = UIFont(name: "GangwonEduAll-OTFBold", size:150)
-        $0.font.withSize(60)
-        $0.textAlignment = .center //가운데 정렬
-        //$0.backgroundColor = UIColor(red: 180.0 / 255, green: 180.0 / 255, blue: 180.0 / 255, alpha: 1)
-    }
+    let imageView: UIImageView = {
+            let aImageView = UIImageView()
+            aImageView.backgroundColor = .white
+            //표시될 UIImage 객체 부여
+            aImageView.image = UIImage(named: "asdf")
+            aImageView.translatesAutoresizingMaskIntoConstraints = false
+            return aImageView
+        }()
     let idlb = UILabel().then {
         $0.font = UIFont(name: "GangwonEduAll-OTFBold", size: 20)
         $0.text = " ID"
@@ -101,10 +102,10 @@ class SigninVC: UIViewController {
     
     func setup() {
         [
-            logolb, idlb, idTextField, pwTextField, pwlb, pwTextField, signinBt, signupBt
+            imageView, idlb, idTextField, pwTextField, pwlb, pwTextField, signinBt, signupBt
         ].forEach{ self.view.addSubview($0)
         }
-        logolb.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(150)
             $0.bottom.equalToSuperview().offset(-600)
             $0.left.equalToSuperview().offset(70)
@@ -117,8 +118,8 @@ class SigninVC: UIViewController {
             $0.right.equalToSuperview().offset(-70)
         }
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb).offset(150)
-            $0.bottom.equalTo(logolb).offset(100)
+            $0.top.equalTo(imageView).offset(150)
+            $0.bottom.equalTo(imageView).offset(100)
             $0.left.equalToSuperview().offset(70)
             $0.right.equalToSuperview().offset(-70)
         }
@@ -129,14 +130,14 @@ class SigninVC: UIViewController {
             $0.right.equalToSuperview().offset(-70)
         }
         pwTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb).offset(250)
-            $0.bottom.equalTo(logolb).offset(200)
+            $0.top.equalTo(imageView).offset(250)
+            $0.bottom.equalTo(imageView).offset(200)
             $0.left.equalToSuperview().offset(70)
             $0.right.equalToSuperview().offset(-70)
         }
         signinBt.snp.makeConstraints {
-            $0.top.equalTo(logolb).offset(350)
-            $0.bottom.equalTo(logolb).offset(300)
+            $0.top.equalTo(imageView).offset(350)
+            $0.bottom.equalTo(imageView).offset(300)
             $0.left.equalToSuperview().offset(70)
             $0.right.equalToSuperview().offset(-70)
         }

@@ -21,12 +21,14 @@ class signupVC: UIViewController {
     @State var request: Bool = false
     @State var success: Bool = false
     
-    let logolb = UILabel().then {
-        $0.text = "hello"
-        $0.font = UIFont(name: "GangwonEduAll-OTFBold", size: 60)
-        $0.textAlignment = .center //가운데 정렬
-        
-    }
+    let imageView: UIImageView = {
+            let aImageView = UIImageView()
+            aImageView.backgroundColor = .white
+            //표시될 UIImage 객체 부여
+            aImageView.image = UIImage(named: "asdf")
+            aImageView.translatesAutoresizingMaskIntoConstraints = false
+            return aImageView
+        }()
     let namelb = UILabel().then {
         $0.font = UIFont(name: "GangwonEduAll-OTFBold", size: 20)
         $0.text = " NAME"
@@ -85,7 +87,7 @@ class signupVC: UIViewController {
         $0.addTarget(self, action: #selector(TabsignupBt), for: .touchUpInside)
         
     }
-    @objc private func TabsignupBt() {
+    @objc func TabsignupBt() {
 //        let VC = SigninVC()
 //        VC.modalPresentationStyle = .fullScreen
 //        self.present(VC, animated: true, completion: nil)
@@ -118,82 +120,74 @@ class signupVC: UIViewController {
         }
         
     }
-    private func setupNavigationBar() {
-        let navigationBar = UINavigationBarAppearance()
-        navigationBar.backgroundColor = UIColor(red: 255.0/255, green:255.0/255, blue:255.0/255, alpha: 1)
-        navigationController?.navigationBar.standardAppearance = navigationBar
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        setupNavigationBar()
         setup()
     }
     
     func setup() {
         
-        [logolb, namelb, nameTextField, idlb, idTextField, pwTextField, pwlb, pwlb, CKPwlb, pwCKTextField, signupBt
+        [imageView, namelb, nameTextField, idlb, idTextField, pwTextField, pwlb, pwlb, CKPwlb, pwCKTextField, signupBt
         ].forEach{ self.view.addSubview($0) }
-        logolb.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(50)
             $0.bottom.equalToSuperview().offset(-590)
             $0.left.equalToSuperview().offset(70)
             $0.right.equalToSuperview().offset(-70)
         }
         namelb.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(10)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(25)
+            $0.top.equalTo(imageView.snp.bottom).offset(10)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(25)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(30)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(90)
+            $0.top.equalTo(imageView.snp.bottom).offset(30)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(90)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         idlb.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(100)
-            $0.bottom.equalTo(logolb).offset(115)
+            $0.top.equalTo(imageView.snp.bottom).offset(100)
+            $0.bottom.equalTo(imageView).offset(115)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(120)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(180)
+            $0.top.equalTo(imageView.snp.bottom).offset(120)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(180)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         pwlb.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(190)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(205)
+            $0.top.equalTo(imageView.snp.bottom).offset(190)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(205)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         pwTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(210)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(270)
+            $0.top.equalTo(imageView.snp.bottom).offset(210)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(270)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         CKPwlb.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(280)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(295)
+            $0.top.equalTo(imageView.snp.bottom).offset(280)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(295)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         pwCKTextField.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(300)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(360)
+            $0.top.equalTo(imageView.snp.bottom).offset(300)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(360)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
         signupBt.snp.makeConstraints {
-            $0.top.equalTo(logolb.snp.bottom).offset(385)
-            $0.bottom.equalTo(logolb.snp.bottom).offset(450)
+            $0.top.equalTo(imageView.snp.bottom).offset(385)
+            $0.bottom.equalTo(imageView.snp.bottom).offset(450)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
