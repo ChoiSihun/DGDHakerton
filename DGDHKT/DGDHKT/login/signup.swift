@@ -15,7 +15,7 @@ class signupVC: UIViewController {
     @State var name : String = ""
     @State var id: String = ""
     @State var pw: String = ""
-    @State var wrongname: Bool = false
+    @State var wrongName: Bool = false
     @State var wrongId: Bool = false
     @State var wrongPw: Bool = false
     @State var request: Bool = false
@@ -69,8 +69,10 @@ class signupVC: UIViewController {
         $0.placeholder = "비밀번호를 확인해주세요"
         $0.font = .systemFont(ofSize: 14.0, weight: .medium)
         $0.autocapitalizationType = .none
+        $0.isSecureTextEntry = true
         $0.backgroundColor = UIColor(red: 220/255, green: 220/225, blue: 220/225, alpha: 1)
         $0.layer.cornerRadius = 27
+        
     }
     let CKPwlb = UILabel().then {
         $0.text = " PWCheck"
@@ -78,47 +80,56 @@ class signupVC: UIViewController {
     }
     let signupBt = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.0/255, green:0.0/255, blue:0.0/255, alpha: 1)
-        $0.setTitle("로그인", for: .normal)
+        $0.setTitle("회원가입하기", for: .normal)
         $0.layer.cornerRadius = 27
         $0.addTarget(self, action: #selector(TabsignupBt), for: .touchUpInside)
         
     }
     @objc private func TabsignupBt() {
-        let VC = SigninVC()
-        VC.modalPresentationStyle = .fullScreen
-        self.present(VC, animated: true, completion: nil)
-//        let name = nameTextField.text!
-//        let id = idTextField.text!
-//        let pw = pwTextField.text!
-//        let pwCK = pwCKTextField.text!
-//
-//        print(name, id, pw, pwCK)
-//        AF.request("\(api)/auth/signup",
-//                   method: .post,
-//                   parameters: ["name": name,
-//                                "id": id,
-//                                "password": pw],
-//                   encoding : JSONEncoding.default,
-//                   headers: ["Content-Type": "application/json"]
-//        )
-//        .validate()
-//        .responseData { response in
-//            switch response.result {
-//
-//                case.success:
-//                    let VC = SigninVC()
-//                    VC.modalPresentationStyle = .fullScreen
-//                    self.present(VC, animated: true, completion: nil)
-//
-//            case.failure(let error):
-//                print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
-//            }
-//        }
+//        let VC = SigninVC()
+//        VC.modalPresentationStyle = .fullScreen
+//        self.present(VC, animated: true, completion: nil)
+        let name = nameTextField.text!
+        let id = idTextField.text!
+        let pw = pwTextField.text!
+        let pwCK = pwCKTextField.text!
+
+        print(name, id, pw, pwCK)
+        let param: Parameters = [
+            "name": name,
+            "id": id,
+            "password": pw
+        ]
+        AF.request("\(api)/auth/signup",
+                   method: .post,
+                   parameters: param,
+                   encoding : JSONEncoding.default,
+                   headers: ["Content-Type": "application/json"]
+        )
+        .responseData(emptyResponseCodes: [201]) { res in
+            switch res.result {
+            case .success(_):
+                let VC = SigninVC()
+                VC.modalPresentationStyle = .fullScreen
+                self.present(VC, animated: true, completion: nil)
+            case let .failure(err):
+                print("🚫",err.localizedDescription)
+            }
+        }
+        
+    }
+    private func setupNavigationBar() {
+        let navigationBar = UINavigationBarAppearance()
+        navigationBar.backgroundColor = UIColor(red: 255.0/255, green:255.0/255, blue:255.0/255, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navigationBar
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        setupNavigationBar()
         setup()
     }
     

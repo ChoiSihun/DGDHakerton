@@ -20,6 +20,7 @@
 		8550CA91293A38EE009361E6 /* Font.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8550CA90293A38EE009361E6 /* Font.otf */; };
 		8550CA93293A3C46009361E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550CA92293A3C46009361E6 /* HomeVC.swift */; };
 		85AEAEEF293A54180057EC19 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEAEEE293A54180057EC19 /* File.swift */; };
+		85AEAEF1293A5D720057EC19 /* APIK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEAEF0293A5D720057EC19 /* APIK.swift */; };
 		C70AB2BE20985BD8EB352C0E /* Pods_DGDHKT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296A97300D0332BFA1C10685 /* Pods_DGDHKT.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		8550CA90293A38EE009361E6 /* Font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Font.otf; sourceTree = "<group>"; };
 		8550CA92293A3C46009361E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		85AEAEEE293A54180057EC19 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		85AEAEF0293A5D720057EC19 /* APIK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIK.swift; sourceTree = "<group>"; };
 		94BEAAE71E1CEDC60BD36AF5 /* Pods-DGDHKT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGDHKT.debug.xcconfig"; path = "Target Support Files/Pods-DGDHKT/Pods-DGDHKT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				8550CA87293A3081009361E6 /* signup.swift */,
 				85AEAEEE293A54180057EC19 /* File.swift */,
 				8550CA8B293A30F7009361E6 /* TabBar */,
+				85AEAEF0293A5D720057EC19 /* APIK.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				8550CA8A293A30F3009361E6 /* TabBarController.swift in Sources */,
 				854D127D293A2678006E770E /* SceneDelegate.swift in Sources */,
 				8550CA8F293A37C2009361E6 /* API.swift in Sources */,
+				85AEAEF1293A5D720057EC19 /* APIK.swift in Sources */,
 				8550CA86293A3067009361E6 /* signin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

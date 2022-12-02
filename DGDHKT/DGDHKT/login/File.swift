@@ -15,3 +15,5 @@ struct signupData: Decodable, Hashable {
 struct signupDatas: Decodable, Hashable {
     let token: String
 }
+
+struct NoResponse: Decodable {}
